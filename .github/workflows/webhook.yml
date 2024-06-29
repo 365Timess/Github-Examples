@@ -11,5 +11,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Set up environment
+        run: echo "GITHUB_EVENT_NAME=${{ github.event_name }}" >> $GITHUB_ENV
+
       - name: Run a script
-        run: echo "Event of type: ${{ github.event_name }}"
+        run: echo "Event of type: $GITHUB_EVENT_NAME"
